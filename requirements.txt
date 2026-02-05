@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pydantic
+requests
+httpx
+asyncio
+elasticsearch
+qianfan
+jieba
