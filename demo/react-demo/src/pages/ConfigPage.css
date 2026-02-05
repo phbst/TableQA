@@ -1,0 +1,38 @@
+.config-page {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.config-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.config-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.config-card {
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.config-card .ant-card-head {
+  background-color: #fafafa;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.config-card .ant-card-head-title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.config-card textarea {
+  font-size: 13px;
+  line-height: 1.6;
+}
