@@ -55,3 +55,31 @@ def reload_db_config() -> bool:
 def reload_model_config() -> bool:
     """重新加载模型配置（用于动态更新）"""
     return load_model_config()
+
+
+def save_model_config(config_data: Dict[str, Any]) -> bool:
+    """保存模型配置到文件"""
+    global model_config
+    try:
+        with open(MODEL_CONFIG_FILE, "w", encoding="utf-8") as f:
+            json.dump(config_data, f, ensure_ascii=False, indent=2)
+        model_config = config_data
+        print(f"[INFO] 成功保存模型配置")
+        return True
+    except Exception as e:
+        print(f"[ERROR] 保存模型配置失败: {e}")
+        return False
+
+
+def save_db_config(config_data: Dict[str, Any]) -> bool:
+    """保存数据库配置到文件"""
+    global db_config
+    try:
+        with open(DB_CONFIG_FILE, "w", encoding="utf-8") as f:
+            json.dump(config_data, f, ensure_ascii=False, indent=2)
+        db_config = config_data
+        print(f"[INFO] 成功保存数据库配置")
+        return True
+    except Exception as e:
+        print(f"[ERROR] 保存数据库配置失败: {e}")
+        return False

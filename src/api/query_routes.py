@@ -16,7 +16,7 @@ router = APIRouter()
 @router.get("/tables", response_model=TablesResponse, summary="获取可用表列表")
 async def get_tables():
     db_config = get_db_config()
-    if not db_config:
+    if db_config is None:
         raise HTTPException(status_code=500, detail="数据库配置未加载")
     tables = list(db_config.keys())
     return TablesResponse(success=True, tables=tables, count=len(tables))
@@ -33,7 +33,7 @@ async def get_table_schema(table_name: str):
 @router.get("/models", response_model=ModelsResponse, summary="获取可用模型列表")
 async def get_models():
     model_config = get_model_config()
-    if not model_config:
+    if model_config is None:
         raise HTTPException(status_code=500, detail="模型配置未加载")
     enabled_models = {name: info for name, info in model_config["models"].items() if info.get("enabled", True)}
     return ModelsResponse(
@@ -47,7 +47,7 @@ async def get_models():
 async def query_data(request: QueryRequest):
     """根据自然语言查询生成并执行SQL"""
     db_config = get_db_config()
-    if not db_config:
+    if db_config is None:
         raise HTTPException(status_code=500, detail="数据库配置未加载")
 
     table_names = []

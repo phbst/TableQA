@@ -31,6 +31,8 @@ body {
   top: 0;
   z-index: 1000;
   height: 64px;
+  border-radius: 12px;
+  margin: 16px 16px 0 16px;
 }
 
 .logo {
@@ -198,6 +200,7 @@ body {
 .history-card .ant-card-body {
   word-break: break-word;
   overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .user-card {
@@ -215,10 +218,6 @@ body {
   border-left: 4px solid #52c41a;
 }
 
-.sql-card {
-  background: white;
-  border-left: 4px solid #52c41a;
-}
 
 .error-card {
   background: #fff1f0;
@@ -226,21 +225,6 @@ body {
 }
 
 /* ========== SQL 代码样式 ========== */
-.sql-code {
-  background: #1e1e1e;
-  color: #d4d4d4;
-  padding: 16px;
-  border-radius: 8px;
-  font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
-  font-size: 13px;
-  line-height: 1.6;
-  overflow-x: auto;
-  margin: 8px 0;
-  white-space: pre-wrap;
-  word-break: break-all;
-  max-width: 100%;
-}
-
 .sql-code-small {
   background: #f5f5f5;
   color: #333;
@@ -250,11 +234,12 @@ body {
   font-size: 12px;
   line-height: 1.5;
   overflow-x: auto;
+  overflow-y: hidden;
   margin: 4px 0;
-  white-space: pre-wrap;
-  word-break: break-all;
+  white-space: pre;
   border: 1px solid #e8e8e8;
   max-width: 100%;
+  width: 100%;
 }
 
 /* ========== 卡片样式 ========== */
@@ -330,6 +315,11 @@ body {
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid #d0d7de;
+}
+
+.ant-table-wrapper {
+  max-width: 100%;
+  overflow: auto;
 }
 
 .ant-table-thead > tr > th {

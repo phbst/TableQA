@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .config import load_db_config, load_model_config
-from .api import query_router, health_router, excel_router, chat_router
+from .api import query_router, health_router, excel_router, chat_router, config_router
 
 # 创建 FastAPI 应用
 app = FastAPI(
@@ -41,6 +41,7 @@ app.include_router(health_router, tags=["健康检查"])
 app.include_router(query_router, tags=["查询"])
 app.include_router(chat_router, tags=["对话"])
 app.include_router(excel_router, tags=["Excel导入"])
+app.include_router(config_router, tags=["配置管理"])
 
 
 if __name__ == "__main__":

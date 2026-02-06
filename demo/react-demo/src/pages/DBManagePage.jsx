@@ -306,15 +306,6 @@ function DBManagePage() {
 
   return (
     <div className="page-container">
-      <div className="page-header">
-        <Title level={2}>
-          <DatabaseOutlined /> 数据库管理
-        </Title>
-        <Text type="secondary">
-          浏览数据库表结构和数据，支持快速预览和搜索
-        </Text>
-      </div>
-
       <Card bordered={false}>
         <Tabs items={tabItems} activeKey={activeTab} onChange={setActiveTab} />
       </Card>

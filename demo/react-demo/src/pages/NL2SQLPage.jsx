@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import {
-  Card, Input, Select, Button, Table, Space, Typography, Tag,
-  Divider, message, Timeline, Spin
+  Card, Input, Select, Button, Space, Typography, Tag,
+  message, Spin
 } from 'antd'
 import {
   SearchOutlined, RobotOutlined, ThunderboltOutlined,
@@ -104,15 +104,6 @@ function NL2SQLPage() {
         addToHistory({
           type: 'success',
           content: '✅ SQL 查询执行完成'
-        })
-
-        // 显示 SQL 和查询结果
-        addToHistory({
-          type: 'sql',
-          sql: queryResponse.data.sql,
-          data: queryResponse.data.data,
-          columns: queryResponse.data.columns,
-          total_rows: queryResponse.data.total_rows
         })
 
         // 步骤2: 调用 Chat API 分析结果
@@ -262,47 +253,6 @@ function NL2SQLPage() {
           </Card>
         )
 
-      case 'sql':
-        const columns = item.columns?.map(col => ({
-          title: col,
-          dataIndex: col,
-          key: col,
-          ellipsis: true,
-        })) || []
-
-        const dataSource = item.data?.map((row, idx) => ({
-          ...row,
-          key: idx
-        })) || []
-
-        return (
-          <Card className="history-card sql-card" size="small">
-            <Space>
-              <CheckCircleOutlined style={{ color: '#52c41a' }} />
-              <Text strong>查询结果:</Text>
-              <Tag color="blue">{item.total_rows} 条记录</Tag>
-            </Space>
-
-            <div style={{ marginTop: 12 }}>
-              <Text type="secondary">生成的 SQL:</Text>
-              <pre className="sql-code">{item.sql}</pre>
-            </div>
-
-            <Divider style={{ margin: '12px 0' }} />
-
-            <Table
-              columns={columns}
-              dataSource={dataSource}
-              pagination={{
-                pageSize: 5,
-                size: 'small',
-                showTotal: (total) => `共 ${total} 条`
-              }}
-              scroll={{ x: 'max-content' }}
-              size="small"
-            />
-          </Card>
-        )
 
       case 'error':
         return (
@@ -323,15 +273,6 @@ function NL2SQLPage() {
 
   return (
     <div className="page-container">
-      <div className="page-header">
-        <Title level={2}>
-          <ThunderboltOutlined /> NL2SQL + 智能对话
-        </Title>
-        <Text type="secondary">
-          输入自然语言问题，系统将自动分析并执行查询，展示完整的推理过程
-        </Text>
-      </div>
-
       <div className="nl2sql-layout">
         <div className="input-panel">
           <Card title="查询配置" bordered={false}>

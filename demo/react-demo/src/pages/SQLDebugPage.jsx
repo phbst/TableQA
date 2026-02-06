@@ -273,15 +273,6 @@ function SQLDebugPage() {
 
   return (
     <div className="page-container">
-      <div className="page-header">
-        <Title level={2}>
-          <CodeOutlined /> SQL 调试工具
-        </Title>
-        <Text type="secondary">
-          直接执行自定义 SQL 查询，支持历史记录管理
-        </Text>
-      </div>
-
       <Card bordered={false}>
         <Tabs items={tabItems} />
       </Card>

@@ -144,6 +144,14 @@ function ExcelImportPage() {
       if (response.data.success) {
         setImportResult(response.data)
 
+        // 删除预览表
+        try {
+          await queryAPI.deleteTable(`preview_${tableName.trim()}`)
+          console.log('预览表已删除')
+        } catch (deleteErr) {
+          console.warn('删除预览表失败:', deleteErr)
+        }
+
         // 自动更新配置
         try {
           await queryAPI.updateConfig({ mode: 'add' })
@@ -177,15 +185,6 @@ function ExcelImportPage() {
 
   return (
     <div className="page-container">
-      <div className="page-header">
-        <Title level={2}>
-          <UploadOutlined /> Excel 表格导入
-        </Title>
-        <Text type="secondary">
-          拖拽或选择Excel文件导入到数据库，支持预览和自动配置更新
-        </Text>
-      </div>
-
       <Card bordered={false}>
         <Steps current={currentStep} style={{ marginBottom: 32 }}>
           <Steps.Step title="上传文件" icon={<UploadOutlined />} />

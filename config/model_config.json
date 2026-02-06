@@ -1,0 +1,12 @@
+{
+  "models": {
+    "claude-sonnet-4-20250514": {
+      "type": "online",
+      "url": "",
+      "model": "",
+      "api_key": "Bearer xxx",
+      "description": ""
+    }
+  },
+  "default_model": "claude-sonnet-4-20250514"
+}

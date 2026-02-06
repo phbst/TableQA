@@ -6,6 +6,7 @@
 # --- NL2SQL 原始配置 ---
 DB_PATH = "./data/sqlite3.db"
 PROMPT_TEMPLATE_FILE = "./config/infer.template"
+CHAT_TEMPLATE_FILE = "./config/chat.template"
 DB_CONFIG_FILE = "./config/config.json"
 MODEL_CONFIG_FILE = "./config/model_config.json"
 
